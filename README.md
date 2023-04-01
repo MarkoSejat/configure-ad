@@ -131,7 +131,38 @@ Using the same steps we did to log into Client-1 Remote Desktop Connection, we c
 <img src="https://i.imgur.com/7aYiVyp.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-We can go ahead and access the firewall by going to our windows search bar and either typing "firewall" and selecting "Windows Defender Firewall with Advanced Security on Local COmputer" OR typing in "wf.msc" which will take you to the same screen. From there we can go ahead and click on "Inbound Rules" on the left hand side and then sort the menu by "Protocal". We want to go ahead and find all the ICMPv4 which is what ping uses and enable the three selections shown in the photo above. We can either right click each one and press "enable" or just do it from the righthand side menu. 
+We can go ahead and access the firewall by going to our windows search bar and either typing "firewall" and selecting "Windows Defender Firewall with Advanced Security on Local COmputer" OR typing in "wf.msc" which will take you to the same screen. From there we can go ahead and click on "Inbound Rules" on the left hand side and then sort the menu by "Protocal". We want to go ahead and find all the ICMPv4 which is what ping uses and enable the three selections shown in the photo above. We can either right click each one and press "enable" or just do it from the right-hand side menu. 
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/RRtjAVH.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+If we go back into Client-1 and try to ping 10.0.0.4 again we will see that it now works and that IVMPv4 traffic is no longer being blocked by the firewall. 
+
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/KHpGlM8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+The next order of business is actually installing Active Directory. To do this, we need to go into our DC-1 VM and click on "Add Files and features" on our server manager and run the installer. Make sure you select "Active Directory Domain Services" when asked to select server roles. This step is very important so make sure that you select the correct one! Go on and click next on everything else and let the installer run. 
+  
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/I0cSxmV.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/GXCEbPM.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/nOVE1rR.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>  
+</p>
+<p>
+Once the installer has finished we can go ahead and click on the little flag icon on the top of our server manager dashboard. There should be a little yellow icon that appeared. Simply click the flag and select "Promote this server to a domain controller". From there we can select "Add a new forest" and set the root domain name to mydomain.com (you can use whatever name you want). I chose to go with mydomain.com because this is just a demonstration and this is not going to be public. It will ask you to type in a restore mode password which you can ahead and add. Since this is just a tutorial, this part is not important but it is relevant in the real world to save this password. Just keep pressing Next on everything and we will restart when finished. 
+  
 </p>
 <br />
 
@@ -143,36 +174,6 @@ We can go ahead and access the firewall by going to our windows search bar and e
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 </p>
 <br />
-
-
-<p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-
-<p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-
-<p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
 
 
 <p>
