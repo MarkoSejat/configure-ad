@@ -161,7 +161,7 @@ The next order of business is actually installing Active Directory. To do this, 
 <img src="https://i.imgur.com/nOVE1rR.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>  
 </p>
 <p>
-Once the installer has finished we can go ahead and click on the little flag icon on the top of our server manager dashboard. There should be a little yellow icon that appeared. Simply click the flag and select "Promote this server to a domain controller". From there we can select "Add a new forest" and set the root domain name to mydomain.com (you can use whatever name you want). I chose to go with mydomain.com because this is just a demonstration and this is not going to be public. It will ask you to type in a restore mode password which you can ahead and add. Since this is just a tutorial, this part is not important but it is relevant in the real world to save this password. Just keep pressing Next on everything and we will restart when finished. 
+Once the installer has finished we can go ahead and click on the little flag icon on the top of our server manager dashboard. There should be a little yellow icon that appeared. Simply click the flag and select "Promote this server to a domain controller". From there we can select "Add a new forest" and set the root domain name to mydomain.com (you can use whatever name you want). I chose to go with mydomain.com because this is just a demonstration and this is not going to be public. It will ask you to type in a restore mode password which you can ahead and add. Since this is just a tutorial, this part is not important but it is relevant in the real world to save this password. Just keep pressing Next on everything and we will restart when finished. Since we are using VMs for this, it will probably log you out of your VM. Now if you remember, we are logged into this VM using the "labuser" account. If we try to log in the same way again, it will not allow us. This is because DC-1 is now using the FQDN (fully qualified domain name) which is basically domain-name\user-account. So , in our case we need to log in as mydomain.com\labuser and use the same password as before.
   
 </p>
 <br />
@@ -169,58 +169,66 @@ Once the installer has finished we can go ahead and click on the little flag ico
 
 <p>
 <img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/nc5WyKf.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>  
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Now that we are about half-way through this tutorial, we can go ahead and create an admin and normal sser account in Active Directory. While in our Server Manager dashboard, we can go ahead and click on "Tools" on the top right and select "Active Directory Users and Computers". Here we can see the UI of AD. Here we can see all of our users in the "Users" folder if we click on mydomain.com on the left. We can also see our Domain Controller inside of its own folder. We are now going to create what is known as "Organizational Units" inside of mydomain.com which can also be thought of as folders but with a lot more use cases for them. But for now lets just keep it simple.  We can right click mydomain.com on the lefthand side, > new > Organizational Unit. I am going to do this twice and create two separate OUs. One will be called "_EMPLOYEES" and the other will be called "_ADMINS". 
+
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/ZBXiWYM.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Ts5RKw9.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+In the real world, it is never a good idea to make generic account names such as "ADMIN" or "user". In most cases, everything will always be tied to the individual. For this tutorial we are using "labuser" and we can continue to do so. However, to make things a little morea "realistic", I am going to go on and set up an actual dedicated admin account and log out of labuser. We can start by going to "_ADMINS" and then on the righthand side we can right click the blank area and select new > user > and create a Jane Doe account. I named the account "Jane_admin". Click next, set up a password, and you can uncheck the requirement asking to reset password. 
 </p>
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/oV4Jeha.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+Now, even though Jane Doe is in the _ADMINS Organizational Unit does not mean that she has admin privilages yet. We have to go on and set those up for her to use. To do this we can go back into "Active Directory Users and Computers" > _ADMINS > Jane Doe > right click > Properties > Member of > and then we can go to where it says "Enter Object names to select". There we can write "domain" and press search names on the right. A new window should pop up with the option for "Domain Admins". We can go ahead and press OK. Then click apply and close out. We have now given Jane admin permissions. Now log out of DC-1 and try logging in as mydomain.com\Jan_admin (or whatever you decided to name it). 
 
-
-
-<p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-
-<p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 </p>
 <br />
 
 
 
 <p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Fa61whj.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+We can verify which account we are using by going to our command line and typing in "whoami" and it should display the user account. 
+  
 </p>
 <br />
 
 
 
 <p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/CRAR93v.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/bAMybt7.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+We now have to join "Client-1" to the Domain Controller (DC-1). We need to do this so that we can use the accounts that are set up on the DC on any computer that is part of its network. From the Azure Portal, we need to set Client-1’s DNS settings to the DC’s Private IP address. We know that the private IP address for DC-1 is 10.0.0.4 so we can go to Client-1 in Azure portal and click on "Netowrking" and then click Network Interface. From there we can click on "DNS servers" on the lefthand side and change the setting to "Custom" under DNS Servers to 10.0.0.4 and click save (See above image). We can then go ahead and restart Client-1 from its profile page in Azure. I posted an image of this process above if you have trouble finding it. It will log you out of the Client-1 VM. Just simply sign back in using the original account name you set up when creating the VM at the very begining. In my case it was "labuser". 
+
+  
+</p>
+<br />
+
+
+
+<p>
+<img src="https://i.imgur.com/y01vK0L.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+We now have to connect Client-1 to DC-1. Before we do that, lets just see if we successfully completed the previous step of connecting Client-1 to the DNS of DC-1. We can go into our command line and type in "ipconfig /all". From there we should see the updated DNS server IP. 
+  
 </p>
 <br />
 
