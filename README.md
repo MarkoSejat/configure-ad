@@ -227,28 +227,29 @@ We now have to join "Client-1" to the Domain Controller (DC-1). We need to do th
 <img src="https://i.imgur.com/y01vK0L.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-We now have to connect Client-1 to DC-1. Before we do that, lets just see if we successfully completed the previous step of connecting Client-1 to the DNS of DC-1. We can go into our command line and type in "ipconfig /all". From there we should see the updated DNS server IP. 
+Lets just see if we successfully completed the previous step of connecting Client-1 to the DNS of DC-1. We can go into our command line and type in "ipconfig /all". From there we should see the updated DNS server IP. 
   
 </p>
 <br />
 
 
-
 <p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/36vGyRz.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Now lets join Client-1 to the domain controller (DC-1). We can do this by going to our Windows System Settings and clicking "Rename this PC (advanced)". We can then click change, select domain, and name it mydomain.com (or whatever you named yours before). Press ok. Since we are pointing to our domain controller and our DC-1 knows what mydomain.com is, we can now join mydomain.com. A new window will come up and ask us for a name and password. We can go ahead and enter mydomain.com\jane_admin and the password. We should then get a pop up saying "Welcome to mydomain.com domain." (it might be hidden behind your other windows that you have open so just minimize them and press OK. It will then ask you to restart. Client-1 is now joined with the domain controller! 
+  
 </p>
 <br />
 
 
-
 <p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/ATLpQtn.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DNans04.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>  
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+We will now be able to log in from Client-1 using mydomain.com\Jane_admin. this is something that we were not able to do before because DC-1 and Client-1 were not joined together. Now that they are, we can go ahead and log into Client-1 as mydomain.com\jane_admin. Right now, the only person that can really log into mydomain.com is labuser and jane_admin. We want to change this to allow other users to be able to remotely log in as well. We can go back into System settings and click on "Remote Desktop" and click "Select users that can remotely access this PC" under User Accounts. There we will get a blank window with nothing populating it but that is where we can see a list of everyone that is allowed to access the computer. We can then click "Add" and yet another window will open up. Now instead of adding ten thousand names one by one, we can type in "domain users" and click "check names". It will show us a built in group of Domain Users. We can see that the section got populated and we can go and press OK. Now, everyone who will be added to the list of Domain Users will be able to have access.  
+  
 </p>
 <br />
 
