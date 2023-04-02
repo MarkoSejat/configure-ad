@@ -158,7 +158,6 @@ Once the installer has finished we can go ahead and click on the little flag ico
 
 
 <p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/nc5WyKf.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>  
 </p>
 <p>
