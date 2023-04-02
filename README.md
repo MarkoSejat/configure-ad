@@ -266,7 +266,6 @@ Lets wrap things up by creating a bunch of additional users and attempt to log i
 
 <p>
 <img src="https://i.imgur.com/cOup6mp.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/nUAk2uU.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
@@ -275,7 +274,6 @@ We will be observing how this script will generate 10000 different users all wit
 </p>
 <br />
 
-/p>
 <br />
 
 <p>
@@ -289,7 +287,6 @@ We can go ahead and press the little green play button on Powershell ISE to run 
 <br />
 
 
-/p>
 <br />
 
 <p>
