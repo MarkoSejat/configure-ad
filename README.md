@@ -311,7 +311,6 @@ If the successful login attempt was not confirmation enough, we can run command 
 <br />
 
 
-/p>
 <br />
 
 <p>
