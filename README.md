@@ -77,16 +77,6 @@ Following the same steps as we did for creating our DC-1, I went ahead and set u
 </p>
 <br />
 
-
-<p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
 <p>
 <img src="https://i.imgur.com/h73ORUc.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/u8dNpDY.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
@@ -253,13 +243,88 @@ We will now be able to log in from Client-1 using mydomain.com\Jane_admin. this 
 </p>
 <br />
 
-
-
 <p>
-<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Mx55GkV.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+If we minimize the Client-1 VM and go into DC-1, we can see the Domain Users group in Active Directory Users and Computers > mydomain.com >users > domain users > members. There you will see all user accounts that get created. Any account that gets created will be added to that domain users group and will be able to log into client-1. Now we will be able to log into client-1 as a regular non-admin user. Normally you’d want to do this with Group Policy that allows you to change MANY systems at once but I will not be doing that. 
+ 
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/tpBpY5c.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/tpBpY5c.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+
+</p>
+<p>
+Lets wrap things up by creating a bunch of additional users and attempt to log into client-1 with one of the users. We should be logged into DC-1 as jane_admin if we are not already there. We will then go into our Windows search bar and find Power Shell ISE. We want to right-click it and run as administrator. Powershell is a Windows native scripting language which has a number of uses that are beyond the scope of this tutorial. For the purposes of this lab, we will be running a script that allows us to create 10000 of users made-up users for demonstration purposes. Dont worry, you will see why in the next steps. The script can be found here (https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1). Go ahead and copy the entire script by selecting all and copying (cntrl+c).
+
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/cOup6mp.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/saZR1Y8.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/nUAk2uU.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+We will be observing how this script will generate 10000 different users all with the same password (Password1). You can see this by reading the scripting language above. We want to go back into Powershell ISE and click on New. Paste the entire script in there (cntrl+v) and run the script (little green button on top that looks like a play button). We will see that the script is going to run and start generating user accounts. We can also see that the accounts will be created in the "_EMPLOYEES" OU within our Active Directory. 
+  
+</p>
+<br />
+
+/p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/cuRxxzW.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/FUW6nnY.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+We can go ahead and press the little green play button on Powershell ISE to run the script and observe what happens. You will see the script creating 10000 users and placing them into the _EMPLOYEES only OU within AD. 
+ 
+</p>
+<br />
+
+
+/p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/Mx55GkV.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+I selected a random name that was generated. For me it was "bas.pag". I will now log out of Client-1 and try to login using this user to test if everything works. 
+ 
+</p>
+<br />
+
+
+/p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/5nKJfmM.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+If the successful login attempt was not confirmation enough, we can run command and type in "whoami" and we can see that we are logged in as the user we selected. 
+ 
+</p>
+<br />
+
+
+/p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/GQMos5W.jpg" height="100%" width="100%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+If we go back into DC-1 and right click any of the names, we can see that we can do all sorts of stuff such as disable accounts and reset passwords. No doubt that this is something that a help desk professional will constantly be doing throughout the course of their career. That is all for now, I hope that this tutorial was helpfull in demonstrating how to successfully set up a Active Directory and join the network together. Thanks!
+ 
 </p>
 <br />
 
